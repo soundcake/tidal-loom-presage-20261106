@@ -6,10 +6,13 @@ export class MotionSignal {
     this.lastTimestamp = -Infinity;
     this.lastArrival = -Infinity;
     this.valid = false;
+    this.hint = 'Waiting for camera validation…';
     this.value = 0.5;
   }
-  validate(code) {
+  validate(code, hint = '') {
     this.valid = code === 0;
+    const hints = { 1: 'Keep your face and upper chest in view.', 2: 'Keep only one person in view.', 3: 'Move your face toward the centre.', 4: 'Adjust your distance from the camera.', 5: 'Try brighter, even lighting.', 6: 'Reduce bright light on your face.', 7: 'Move back until your upper chest is visible.', 10: 'Let the camera finish adjusting.', 11: 'The camera needs a steadier frame rate.', 12: 'Sit comfortably and keep larger movements small.', 13: 'Move a little farther from the camera.', 14: 'Move a little closer to the camera.', 15: 'Lower your face slightly in the frame.', 16: 'Raise your face slightly in the frame.', 17: 'Face toward the camera.' };
+    this.hint = this.valid ? 'Waiting for fresh chest movement…' : hints[code] || (typeof hint === 'string' && hint.slice(0, 200)) || 'Waiting for a clear camera signal…';
     if (!this.valid) { this.samples = []; this.lastArrival = -Infinity; }
   }
   accept(metrics, timestamp, now) {
@@ -27,7 +30,7 @@ export class MotionSignal {
   }
   read(now) {
     const active = this.valid && now - this.lastArrival <= 2200 && this.samples.length >= 3;
-    return { active, value: this.value };
+    return { active, value: this.value, hint: this.hint };
   }
 }
 
@@ -47,7 +50,7 @@ export class SensorSession {
     const token = ++this.generation;
     const sensor = this.sensor = create();
     this.signal.clear();
-    sensor.onValidation(code => { if (token === this.generation) this.signal.validate(code); });
+    sensor.onValidation((code, timestamp, hint) => { if (token === this.generation) this.signal.validate(code, hint); });
     sensor.onMetrics((metrics, timestamp) => {
       if (token === this.generation) this.signal.accept(metrics, timestamp, now());
     });

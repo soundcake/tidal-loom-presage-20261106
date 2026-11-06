@@ -80,7 +80,7 @@ function draw(now) {
   const amount = mode === 'preview' ? 0.5 + 0.4 * Math.sin((now - startAt) / 1450) : motion.value;
   if (active) phase += Math.min(now - previous, 40) * (reduced ? 0.00007 : 0.0003);
   previous = now;
-  if (mode === 'live') $('signal').textContent = motion.active ? 'Your movement is making this mark.' : 'Waiting for a clear, fresh signal…';
+  if (mode === 'live') $('signal').textContent = motion.active ? 'Your movement is making this mark.' : motion.hint;
   if (mode === 'live' || mode === 'preview') { const seconds = Math.floor((now - startAt) / 1000); $('time').textContent = `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`; }
   const [r,g,b] = colours[colour];
   for (let ribbon = 0; ribbon < 42; ribbon++) {
