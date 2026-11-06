@@ -1,0 +1,19 @@
+{
+  "name": "tidal-loom",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "preview": "node preview.mjs",
+    "build:live": "esbuild live-entry.mjs --bundle --platform=browser --outfile=web/live.js",
+    "start:live": "electron main.cjs"
+  },
+  "dependencies": {
+    "@smartspectra/node-sdk": "3.4.0"
+  },
+  "devDependencies": {
+    "electron": "45.2.3",
+    "esbuild": "0.28.2"
+  }
+}

@@ -1,0 +1,4 @@
+node_modules/
+web/live.js
+.env*
+*.log

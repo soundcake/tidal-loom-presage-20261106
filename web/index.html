@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:">
+  <title>Tidal Loom · a canvas that moves with you</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><a class="wordmark" href="#">tidal loom<span>✳</span></a><span class="eyebrow">A SMALL SPACE TO MAKE SOMETHING</span><button id="clear" class="quiet">Clear canvas</button></header>
+  <main>
+    <section class="intro"><p class="eyebrow">BREATH BECOMES BRUSHWORK</p><h1>Let a little<br>movement unfold.</h1><p>Your natural breathing shapes a living ribbon of ink.<br>No pace to follow. No score to chase. Just a canvas.</p></section>
+    <section class="canvas-panel" aria-label="Interactive ribbon canvas">
+      <div class="canvas-top"><span id="badge">CAMERA OFF</span><span id="time">00:00</span></div>
+      <canvas id="canvas" aria-label="Ribbons expand and contract with chest movement"></canvas>
+      <div class="canvas-bottom"><span id="signal">Choose a colour, then start exploring.</span><div class="palette" aria-label="Ink colour"><button data-colour="terra" aria-label="Terracotta" aria-pressed="true"></button><button data-colour="sage" aria-label="Sage" aria-pressed="false"></button><button data-colour="blue" aria-label="Ocean" aria-pressed="false"></button></div></div>
+    </section>
+    <aside>
+      <p class="eyebrow">YOUR SPACE, YOUR CHOICE</p><h2>Make a small tide.</h2><p>Try the moving illustration first, or use your camera to turn your own chest movement into brushwork.</p>
+      <button id="preview">Try the illustration <span>↗</span></button><p class="caption">Synthetic motion · no camera or SDK</p>
+      <button id="record" class="secondary" disabled>Record artwork</button>
+      <p id="record-status" class="caption" role="status">Saves only the artwork, with its signal source labelled.</p>
+      <a id="download" class="download" hidden>Download artwork video</a>
+      <div class="divider"></div>
+      <label class="consent"><input id="consent" type="checkbox"><span>I am 18 or older, consent to camera processing and the measurement sharing described below, and have read <a href="#privacy">how my data is handled</a>.</span></label>
+      <label class="key-label" for="key">SmartSpectra API key</label><input id="key" type="password" autocomplete="off" placeholder="Kept in memory for this session">
+      <button id="live" class="secondary">Start with my camera</button><button id="stop" class="quiet" disabled>Stop & clear session</button>
+      <p id="status" role="status" aria-live="polite">Camera mode requires the configured desktop app.</p>
+    </aside>
+    <section id="privacy" class="privacy"><h2>Your data, before you start.</h2><p>Tidal Loom keeps a short motion window in memory and clears it when you stop. Camera images stay on your device. The SDK automatically sends derived measurements to Presage and Anthropic for AI analysis; that processing cannot currently be disabled. Optional telemetry is disabled here, but authentication and usage records remain. Presage retains analysis records while the developer account is active, then normally deletes them within 60 days of account closure; other retention periods apply. Stopping clears local data, not those server records. For deletion requests and full details, read <a href="https://presagetech.com/legal/privacy-policy" target="_blank" rel="noreferrer">the SmartSpectra SDK privacy policy</a>.</p><p>If you choose Record artwork, the app temporarily keeps a video of the ribbons and source label in memory. It contains no camera images, audio or API key. Download saves it to your device; a new recording or closing the app discards the in-memory copy. Delete downloaded files on your device when you no longer want them. Nothing is uploaded by the recorder.</p><p class="caption">Adults only. Camera access begins only after consent and Start. Stop or close the window to end capture.</p><details><summary>Application terms</summary><p>Tidal Loom is an interactive artwork. These application terms govern your use of Tidal Loom; Presage’s terms govern its technology separately. Do not use this app for diagnosis or treatment or reverse engineer Presage technology. To the extent permitted by law, Presage’s technology is provided without warranties and Presage disclaims liability for its use. Nothing here limits rights that cannot lawfully be excluded. Contact the app’s repository maintainer for application questions and data requests.</p></details></section>
+  </main>
+  <footer><span>A little movement. A different kind of mark.</span><span>DESIGNED FOR THE MOMENT</span></footer>
+  <script type="module" src="app.mjs"></script>
+</body></html>
