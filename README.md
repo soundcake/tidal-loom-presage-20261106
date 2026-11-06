@@ -4,7 +4,7 @@ Natural chest movement becomes layered ribbons of ink. Tidal Loom uses SmartSpec
 
 ## Live demo
 
-[Watch the 51-second SmartSpectra demonstration](demo/tidal-loom-live.mp4). The video shows real chest-motion input controlling the artwork, with the signal source labelled throughout.
+[Watch the 51-second SmartSpectra demonstration](https://soundcake.github.io/tidal-loom-presage-20261106/). The video shows real chest-motion input controlling the artwork, with the signal source labelled throughout.
 
 ![Tidal Loom responding to a live SmartSpectra chest-motion signal](demo/poster.png)
 
