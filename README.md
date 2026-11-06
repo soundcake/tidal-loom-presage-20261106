@@ -2,6 +2,12 @@
 
 Natural chest movement becomes layered ribbons of ink. Tidal Loom uses SmartSpectra’s chest-breathing trace to change the width of an animated canvas, with three ink palettes and an artwork-only video recorder. There is no target pace, score or health assessment.
 
+## Live demo
+
+[Watch the 51-second SmartSpectra demonstration](demo/tidal-loom-live.mp4). The video shows real chest-motion input controlling the artwork, with the signal source labelled throughout.
+
+![Tidal Loom responding to a live SmartSpectra chest-motion signal](demo/poster.png)
+
 ## Try the illustration
 
 With Node.js 20 or newer:
